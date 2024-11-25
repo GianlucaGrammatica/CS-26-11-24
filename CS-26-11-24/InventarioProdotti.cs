@@ -68,5 +68,27 @@ namespace CS_26_11_24
 
             return risultati;
         }
+
+        public string ControllaScorte(int soglia)
+        {
+            string prodottiDaRiasortire = "";
+
+            foreach (var prodotto in Inventario)
+            {
+                if (prodotto.Value.Item2 < soglia)
+                {
+                    prodottiDaRiasortire += $"ID: {prodotto.Key}, Nome: {prodotto.Value.Item1}, Quantità: {prodotto.Value.Item2}\n";
+                }
+            }
+
+            if (prodottiDaRiasortire == "")
+            {
+                return "Tutte le scorte sono sufficienti.";
+            }
+            else
+            {
+                return prodottiDaRiasortire;
+            }
+        }
     }
 }
